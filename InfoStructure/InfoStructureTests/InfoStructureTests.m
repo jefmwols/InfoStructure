@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "ISRelay.h"
+
 
 @interface InfoStructureTests : XCTestCase
 
@@ -26,9 +28,19 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (id)demo:(NSString*)name with:(NSString*)msg
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSLog (@"Demo %@ says '%@'", name, msg);
+    return [NSString stringWithFormat:@"%@:%@", name, msg];
+}
+
+- (void)testRelay
+{
+    id relay = [ISRelay relayFor:self];
+    id val = [relay demo:@"Tom" with:@"hello"];
+    NSLog (@"value = %@", val);
+    //    [[self relay] demo:@"Tom" with:@"hello"];
+    //    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
 }
 
 @end

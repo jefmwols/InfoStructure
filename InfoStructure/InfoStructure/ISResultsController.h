@@ -127,12 +127,21 @@
 
 @property (strong, nonatomic) NSString *sectionNameKeyPath;
 @property (strong, nonatomic) NSString *cacheName;
-@property (nonatomic, assign)   NSObject *delegate;
+@property (nonatomic, assign) NSObject *delegate;
 @property (strong, nonatomic) NSArray *fetchedObjects;
 @property (strong, nonatomic) NSArray *sectionIndexTitles;
 @property (strong, nonatomic) NSArray *sections;
-@property (strong, nonatomic)   NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic)   NSString *defaultDisplayKey;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSString *defaultDisplayKey;
+
+@end
+
+
+/**
+ *	This enables easy integration of the standard controller
+ *  into the more general purpose variety
+ */
+@interface NSFetchedResultsController (ISResultsControllerCompatabity) <ISResultsController>
 
 @end
 

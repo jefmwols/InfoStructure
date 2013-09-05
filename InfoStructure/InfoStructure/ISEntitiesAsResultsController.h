@@ -16,12 +16,3 @@
 - initWithManagedObjectContext:(NSManagedObjectContext*)managedObjectContext;
 
 @end
-
-/**
- *	This enables easy integration of the standard controller
- *  into the more general purpose variety
- */
-@interface NSFetchedResultsController (ISResultsControllerCompatabity) <ISResultsController>
-
-@end
-
