@@ -8,10 +8,26 @@
 
 #import <XCTest/XCTest.h>
 #import "ISRelay.h"
+#import "EXTNil.h"
+
+
+@interface BogusStuff : NSObject
+- (id)baddemo:(NSString*)name with:(NSString*)msg;
+@end
+
+/**
+ *	Any method expecting a runtime lookup has to implemented
+ *  somewhere to actally show up in the runtime.
+ */
+@implementation BogusStuff
+- (id)baddemo:(NSString*)name with:(NSString*)msg
+{
+    return nil;
+}
+@end
 
 
 @interface InfoStructureTests : XCTestCase
-
 @end
 
 @implementation InfoStructureTests
@@ -38,9 +54,16 @@
 {
     id relay = [ISRelay relayFor:self];
     id val = [relay demo:@"Tom" with:@"hello"];
-    NSLog (@"value = %@", val);
-    //    [[self relay] demo:@"Tom" with:@"hello"];
-    //    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    XCTAssertEqualObjects(val, @"Tom:hello", @"");
+    
+    val = [[self relay] baddemo:@"Tom" with:@"hello"];
+    XCTAssertNil(val, @"");
+ }
+
+- (void)testEXTNil
+{
+    id val = [[EXTNil null] valueForKey:@"fh"];
+    XCTAssertNil(val, @"");
 }
 
 @end
