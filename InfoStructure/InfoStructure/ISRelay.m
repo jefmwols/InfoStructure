@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 WildThink, LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
 #import "ISRelay.h"
 #import "EXTNil.h"
 
@@ -27,16 +27,13 @@ static inline BOOL CanDo (id target, SEL selector, Protocol *protocol)
 @interface ISRelay ()
     @property (strong, nonatomic) Protocol *protocol;
     @property (weak, nonatomic) id target;
+
+- nextResponder;
+
 @end
 
 
 @implementation ISRelay
-
-- initWithTarget:target conformingToProtocol:(Protocol*)protocol {
-    self.target = target;
-    self.protocol = protocol;
-    return self;
-}
 
 + relayFor:target {
     return [[[self class] alloc] initWithTarget:target conformingToProtocol:nil];
@@ -44,6 +41,17 @@ static inline BOOL CanDo (id target, SEL selector, Protocol *protocol)
 
 + relayFor:target conformingToProtocol:(Protocol*)protocol {
     return [[[self class] alloc] initWithTarget:target conformingToProtocol:protocol];
+}
+
+- initWithTarget:target conformingToProtocol:(Protocol*)protocol {
+    self.target = target;
+    self.protocol = protocol;
+    return self;
+}
+
+- (id)nextResponder
+{
+    return nil;
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector
@@ -59,9 +67,9 @@ static inline BOOL CanDo (id target, SEL selector, Protocol *protocol)
             return delegate;
         }
     }
-    if ([self.target isKindOfClass:[UIResponder class]])
+    if ([self.target respondsToSelector:@selector(nextResponder)])
     {
-        UIResponder *responder = self.target;
+        id responder = self.target;
         while ((responder = [responder nextResponder])) {
             if (CanDo (responder, aSelector, self.protocol)) {
                 return responder;

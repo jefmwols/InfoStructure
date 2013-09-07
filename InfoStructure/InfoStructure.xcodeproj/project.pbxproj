@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		969D7A3417DBCA4100E8EFD6 /* ISModelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 969D7A3317DBCA4100E8EFD6 /* ISModelStore.m */; };
 		C9D46C2D17D57B1600D35C4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D46C2C17D57B1600D35C4A /* Foundation.framework */; };
 		C9D46C3217D57B1600D35C4A /* InfoStructure.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9D46C3117D57B1600D35C4A /* InfoStructure.h */; };
 		C9D46C3417D57B1600D35C4A /* InfoStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D46C3317D57B1600D35C4A /* InfoStructure.m */; };
@@ -52,6 +53,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		969D7A3217DBCA4100E8EFD6 /* ISModelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISModelStore.h; sourceTree = "<group>"; };
+		969D7A3317DBCA4100E8EFD6 /* ISModelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISModelStore.m; sourceTree = "<group>"; };
+		969D7A3517DBCA5300E8EFD6 /* InfoStructure.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InfoStructure.podspec; sourceTree = SOURCE_ROOT; };
 		C9D46C2917D57B1600D35C4A /* libInfoStructure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libInfoStructure.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D46C2C17D57B1600D35C4A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9D46C3017D57B1600D35C4A /* InfoStructure-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InfoStructure-Prefix.pch"; sourceTree = "<group>"; };
@@ -141,6 +145,9 @@
 		C9D46C2E17D57B1600D35C4A /* InfoStructure */ = {
 			isa = PBXGroup;
 			children = (
+				969D7A3517DBCA5300E8EFD6 /* InfoStructure.podspec */,
+				969D7A3217DBCA4100E8EFD6 /* ISModelStore.h */,
+				969D7A3317DBCA4100E8EFD6 /* ISModelStore.m */,
 				C9E0F3B617DB6E5D00AB7ADC /* InfoStructure.podspec */,
 				C9D46D0817D6DEEA00D35C4A /* extobjc */,
 				C9D46C6417D619F600D35C4A /* ISRelay.h */,
@@ -287,6 +294,7 @@
 				C9D46C6017D57E7900D35C4A /* ISResultsController.m in Sources */,
 				C9D46C5C17D57E7900D35C4A /* NSAttributeDescription+ValueCoercion.m in Sources */,
 				C9D46C5E17D57E7900D35C4A /* ISIndexViewController.m in Sources */,
+				969D7A3417DBCA4100E8EFD6 /* ISModelStore.m in Sources */,
 				C9E0F3B217DAA72A00AB7ADC /* ISCommand.m in Sources */,
 				C9D46C6617D619F600D35C4A /* ISRelay.m in Sources */,
 				C9D46D0717D6DED500D35C4A /* EXTRuntimeExtensions.m in Sources */,
@@ -358,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -388,7 +396,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

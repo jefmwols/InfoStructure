@@ -10,6 +10,7 @@
 
 @implementation NSAttributeDescription (ValueCoercion)
 
+#ifdef TARGET_OS_IPHONE
 - (UIView*)defaultKeyboardView
 {
     int type = [self attributeType];
@@ -56,6 +57,7 @@
             return UIKeyboardTypeDefault;
     }
 }
+#endif
 
 - valueForStorageFrom:value
 {
