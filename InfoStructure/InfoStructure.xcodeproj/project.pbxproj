@@ -24,6 +24,8 @@
 		C9D46C6617D619F600D35C4A /* ISRelay.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D46C6517D619F600D35C4A /* ISRelay.m */; };
 		C9D46D0417D6DE4700D35C4A /* EXTNil.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D46D0317D6DE4700D35C4A /* EXTNil.m */; };
 		C9D46D0717D6DED500D35C4A /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D46D0617D6DED500D35C4A /* EXTRuntimeExtensions.m */; };
+		C9E0F3B217DAA72A00AB7ADC /* ISCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E0F3B117DAA72A00AB7ADC /* ISCommand.m */; };
+		C9E0F3B517DAB01700AB7ADC /* ISCommandList.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E0F3B417DAB01700AB7ADC /* ISCommandList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,11 @@
 		C9D46D0317D6DE4700D35C4A /* EXTNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTNil.m; sourceTree = "<group>"; };
 		C9D46D0517D6DE7200D35C4A /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTRuntimeExtensions.h; sourceTree = "<group>"; };
 		C9D46D0617D6DED500D35C4A /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		C9E0F3B017DAA72A00AB7ADC /* ISCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCommand.h; sourceTree = "<group>"; };
+		C9E0F3B117DAA72A00AB7ADC /* ISCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCommand.m; sourceTree = "<group>"; };
+		C9E0F3B317DAB01700AB7ADC /* ISCommandList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCommandList.h; sourceTree = "<group>"; };
+		C9E0F3B417DAB01700AB7ADC /* ISCommandList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCommandList.m; sourceTree = "<group>"; };
+		C9E0F3B617DB6E5D00AB7ADC /* InfoStructure.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = InfoStructure.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +141,14 @@
 		C9D46C2E17D57B1600D35C4A /* InfoStructure */ = {
 			isa = PBXGroup;
 			children = (
+				C9E0F3B617DB6E5D00AB7ADC /* InfoStructure.podspec */,
 				C9D46D0817D6DEEA00D35C4A /* extobjc */,
 				C9D46C6417D619F600D35C4A /* ISRelay.h */,
 				C9D46C6517D619F600D35C4A /* ISRelay.m */,
+				C9E0F3B017DAA72A00AB7ADC /* ISCommand.h */,
+				C9E0F3B117DAA72A00AB7ADC /* ISCommand.m */,
+				C9E0F3B317DAB01700AB7ADC /* ISCommandList.h */,
+				C9E0F3B417DAB01700AB7ADC /* ISCommandList.m */,
 				C9D46C5217D57E7900D35C4A /* NSAttributeDescription+ValueCoercion.h */,
 				C9D46C5317D57E7900D35C4A /* NSAttributeDescription+ValueCoercion.m */,
 				C9D46C5417D57E7900D35C4A /* ISTableViewController.h */,
@@ -275,11 +287,13 @@
 				C9D46C6017D57E7900D35C4A /* ISResultsController.m in Sources */,
 				C9D46C5C17D57E7900D35C4A /* NSAttributeDescription+ValueCoercion.m in Sources */,
 				C9D46C5E17D57E7900D35C4A /* ISIndexViewController.m in Sources */,
+				C9E0F3B217DAA72A00AB7ADC /* ISCommand.m in Sources */,
 				C9D46C6617D619F600D35C4A /* ISRelay.m in Sources */,
 				C9D46D0717D6DED500D35C4A /* EXTRuntimeExtensions.m in Sources */,
 				C9D46C3417D57B1600D35C4A /* InfoStructure.m in Sources */,
 				C9D46C5F17D57E7900D35C4A /* ISEntitiesAsResultsController.m in Sources */,
 				C9D46C5D17D57E7900D35C4A /* ISTableViewController.m in Sources */,
+				C9E0F3B517DAB01700AB7ADC /* ISCommandList.m in Sources */,
 				C9D46D0417D6DE4700D35C4A /* EXTNil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

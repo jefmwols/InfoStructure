@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "ISRelay.h"
 #import "EXTNil.h"
+#import "ISCommand.h"
 
 
 @interface BogusStuff : NSObject
@@ -22,12 +23,13 @@
 @implementation BogusStuff
 - (id)baddemo:(NSString*)name with:(NSString*)msg
 {
-    return nil;
+    return @"hi there";
 }
 @end
 
 
 @interface InfoStructureTests : XCTestCase
+@property id delegate;
 @end
 
 @implementation InfoStructureTests
@@ -50,6 +52,14 @@
     return [NSString stringWithFormat:@"%@:%@", name, msg];
 }
 
+- (void)testCommand
+{
+    id command = [ISCommand commandForTarget:self];
+    [command  demo:@"Fred" with:@"Yaba-daba do"];
+    [command invoke];
+}
+
+
 - (void)testRelay
 {
     id relay = [ISRelay relayFor:self];
@@ -58,6 +68,11 @@
     
     val = [[self relay] baddemo:@"Tom" with:@"hello"];
     XCTAssertNil(val, @"");
+    
+    self.delegate = [[BogusStuff alloc] init];
+    val = [[self relay] baddemo:@"Tom" with:@"hello"];
+    XCTAssertNotNil(val, @"");
+    self.delegate = nil;
  }
 
 - (void)testEXTNil
