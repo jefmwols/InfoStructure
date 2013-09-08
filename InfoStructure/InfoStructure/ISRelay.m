@@ -26,7 +26,7 @@ static inline BOOL CanDo (id target, SEL selector, Protocol *protocol)
 
 @interface ISRelay ()
     @property (strong, nonatomic) Protocol *protocol;
-    @property (weak, nonatomic) id target;
+    @property (strong, nonatomic) id target;
 
 - nextResponder;
 

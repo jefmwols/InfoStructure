@@ -7,7 +7,7 @@
 //
 
 #import "ISCommand.h"
-#import "EXTRuntimeExtensions.h"
+//#import "EXTRuntimeExtensions.h"
 
 @interface ISCommand()
     @property (strong, nonatomic) id target;
@@ -56,7 +56,8 @@
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)selector {
-    return ext_globalMethodSignatureForSelector(selector);
+    return [self.target methodSignatureForSelector:selector];
+    //    return ext_globalMethodSignatureForSelector(selector);
 }
 - (void)invoke
 {
