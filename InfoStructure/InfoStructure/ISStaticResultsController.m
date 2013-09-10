@@ -21,7 +21,7 @@
 
 @interface ISStaticResultsController ()
     @property (nonatomic, readwrite) NSArray *sections;
-    @property (nonatomic, readwrite) NSArray *objects;
+//    @property (nonatomic, readwrite) NSArray *objects;
 @end
 
 @implementation ISStaticResultsController
@@ -33,6 +33,9 @@
     self = [super init];
 //    self.managedObjectContext = managedObjectContext;
     
+    self.fetchedObjects = objects;
+    
+    // Build a simple single section
     ISFetchedResultsSectionInfo *section = [[ISFetchedResultsSectionInfo alloc] init];
     section.indexTitle = nil;
     section.objects = objects;
@@ -61,12 +64,12 @@
     return YES;
 }
 
-- (NSArray *)fetchedObjects
-{
-    return self.objects;
-//    NSManagedObjectModel *model = self.managedObjectContext.persistentStoreCoordinator.managedObjectModel;
-//    return [model entities];
-}
+//- (NSArray *)fetchedObjects
+//{
+//    return self.objects;
+////    NSManagedObjectModel *model = self.managedObjectContext.persistentStoreCoordinator.managedObjectModel;
+////    return [model entities];
+//}
 
 /* Returns the indexPath of a given object.
  */

@@ -14,14 +14,16 @@
 
 @implementation ISResultsController
 
-//@synthesize sectionNameKeyPath;
-//@synthesize cacheName;
-//@synthesize delegate;
-//@synthesize fetchedObjects;
-//@synthesize sectionIndexTitles;
-//@synthesize sections;
+@synthesize sectionNameKeyPath;
+@synthesize cacheName;
+@synthesize delegate;
+@synthesize fetchedObjects;
+@synthesize sectionIndexTitles;
+@synthesize sections;
 //@synthesize managedObjectContext;
-//@synthesize defaultDisplayKey;
+@synthesize defaultDisplayKey;
+@synthesize representedObject;
+
 
 - objectAtIndexPath:(NSIndexPath*)indexPath
 {
@@ -41,10 +43,6 @@
     return YES;
 }
 
-- (NSArray *)fetchedObjects
-{
-    return nil;
-}
 
 /* Returns the indexPath of a given object.
  */

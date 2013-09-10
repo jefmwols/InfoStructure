@@ -33,9 +33,11 @@
 
 /**
  *	This specification is designed to closely mimic the NSFetchedResultsController
- *  but does NOT use nor require an NSFetchSpecification.
+ *  but does NOT use nor require an NSFetchSpecification or a ManagedObjectContext
  */
 @protocol ISResultsController <NSObject>
+
+@property (strong, nonatomic) id representedObject;
 
 /* The keyPath on the fetched objects used to determine the section they belong to.
  */
@@ -94,18 +96,6 @@
  */
 @property (nonatomic, readonly) NSArray *sectionIndexTitles;
 
-/* ========================================================*/
-/* =========== QUERYING SECTION INFORMATION ===============*/
-/* ========================================================*/
-
-/* Returns an array of objects that implement the NSFetchedResultsSectionInfo protocol.
- It's expected that developers use the returned array when implementing the following methods of the UITableViewDataSource protocol
- 
- - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
- - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section;
- - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
- 
- */
 @property (nonatomic, readonly) NSArray *sections;
 
 /* Returns the section number for a given section title and index in the section index.
@@ -114,7 +104,7 @@
  */
 - (NSInteger)sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)sectionIndex;
 
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) NSString *defaultDisplayKey;
 
@@ -131,8 +121,9 @@
 @property (strong, nonatomic) NSArray *fetchedObjects;
 @property (strong, nonatomic) NSArray *sectionIndexTitles;
 @property (strong, nonatomic) NSArray *sections;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSString *defaultDisplayKey;
+
+//@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
 

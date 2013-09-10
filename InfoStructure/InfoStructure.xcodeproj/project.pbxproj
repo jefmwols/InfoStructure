@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		969D7A3417DBCA4100E8EFD6 /* ISModelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 969D7A3317DBCA4100E8EFD6 /* ISModelStore.m */; };
+		969D7A3717DBCB1D00E8EFD6 /* ISModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969D7A3617DBCB1D00E8EFD6 /* ISModelTests.m */; };
 		C9D46C2D17D57B1600D35C4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D46C2C17D57B1600D35C4A /* Foundation.framework */; };
 		C9D46C3217D57B1600D35C4A /* InfoStructure.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9D46C3117D57B1600D35C4A /* InfoStructure.h */; };
 		C9D46C3417D57B1600D35C4A /* InfoStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D46C3317D57B1600D35C4A /* InfoStructure.m */; };
@@ -56,6 +57,7 @@
 		969D7A3217DBCA4100E8EFD6 /* ISModelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISModelStore.h; sourceTree = "<group>"; };
 		969D7A3317DBCA4100E8EFD6 /* ISModelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISModelStore.m; sourceTree = "<group>"; };
 		969D7A3517DBCA5300E8EFD6 /* InfoStructure.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InfoStructure.podspec; sourceTree = SOURCE_ROOT; };
+		969D7A3617DBCB1D00E8EFD6 /* ISModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISModelTests.m; sourceTree = "<group>"; };
 		C9D46C2917D57B1600D35C4A /* libInfoStructure.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libInfoStructure.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D46C2C17D57B1600D35C4A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9D46C3017D57B1600D35C4A /* InfoStructure-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InfoStructure-Prefix.pch"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				C9D46C4817D57B1600D35C4A /* InfoStructureTests.m */,
 				C9D46C4317D57B1600D35C4A /* Supporting Files */,
+				969D7A3617DBCB1D00E8EFD6 /* ISModelTests.m */,
 			);
 			path = InfoStructureTests;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9D46C4917D57B1600D35C4A /* InfoStructureTests.m in Sources */,
+				969D7A3717DBCB1D00E8EFD6 /* ISModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
