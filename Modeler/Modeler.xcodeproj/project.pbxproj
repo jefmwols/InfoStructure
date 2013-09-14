@@ -407,6 +407,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Modeler/Modeler-Prefix.pch";
 				INFOPLIST_FILE = "Modeler/Modeler-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -420,6 +421,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Modeler/Modeler-Prefix.pch";
 				INFOPLIST_FILE = "Modeler/Modeler-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -484,6 +486,7 @@
 				969D7ABB17DBD2C800E8EFD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		969D7ABC17DBD2C800E8EFD6 /* Build configuration list for PBXNativeTarget "ModelerTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +495,7 @@
 				969D7ABE17DBD2C800E8EFD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

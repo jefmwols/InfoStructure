@@ -1,2 +1,3 @@
 platform :ios, '6.1'
-pod 'InfoStructure', :path => '~/Sandbox/InfoStructure/InfoStructure/', :branch => 'develop'
+pod 'InfoStructure', :path => '~/Personal/wildthink/labs/InfoStructure/InfoStructure', :branch => 'develop'
+#pod 'InfoStructure', :path => '~/Sandbox/InfoStructure/InfoStructure/', :branch => 'develop'

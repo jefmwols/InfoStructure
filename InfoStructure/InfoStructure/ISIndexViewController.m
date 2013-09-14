@@ -7,6 +7,7 @@
 //
 
 #import "ISIndexViewController.h"
+#import <ISRelay.h>
 
 @interface ISIndexViewController ()
 
@@ -262,6 +263,9 @@
     if ([destinationVC respondsToSelector:@selector(setRepresentedObject:)]) {
         [(id)destinationVC setRepresentedObject:selection];
     }
+    
+    [[self relay] didPrepareForSegue:segue withSelection:selection];
+    
 }
 
 @end

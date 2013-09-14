@@ -10,6 +10,7 @@
 #import <InfoStructure/ISTableViewController.h>
 #import <InfoStructure/ISStaticResultsController.h>
 #import <InfoStructure/ISIndexViewController.h>
+#import <InfoStructure/ISNavigation.h>
 
 
 @implementation AppDelegate
@@ -17,6 +18,16 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+- (BOOL)willPerformSegue:(UIStoryboardSegue*)segue
+{
+    return YES;
+}
+
+-(void)didPrepareForSegue:(UIStoryboardSegue*)segue withSelection:selection;
+{
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -40,6 +51,12 @@
 //    [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void)configure
+{
+//    (UINavigationController)
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

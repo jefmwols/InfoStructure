@@ -26,9 +26,18 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testPredicates
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSArray *list = @[
+                      @{@"flag": @YES, @"switch": @YES, @"num": @23 },
+                      @{@"flag": @YES, @"switch": @NO, @"num": @23 },
+                      @{@"flag": @NO,  @"switch": @YES, @"num": @23 },
+                      @{@"flag": @NO,  @"switch": @NO, @"num": @23 },
+                      ];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"flag AND switch"];
+    NSArray *filtered = [list filteredArrayUsingPredicate:pred];
+    
+    NSLog(@"filtered is %@", filtered);
 }
 
 @end

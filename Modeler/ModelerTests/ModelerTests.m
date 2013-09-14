@@ -26,10 +26,18 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testPredicates
 {
-//    id n = [EXTNil null];
-//    XCTNotNil(n, @"");
+    NSArray *list = @[
+                      @{@"flag": @YES, @"switch": @YES, @"num": @23 },
+                      @{@"flag": @YES, @"switch": @NO, @"num": @23 },
+                      @{@"flag": @NO,  @"switch": @YES, @"num": @23 },
+                      @{@"flag": @NO,  @"switch": @NO, @"num": @23 },
+                      ];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"flag = YES AND switch = YES"];
+    NSArray *filtered = [list filteredArrayUsingPredicate:pred];
+    
+    NSLog(@"filtered is %@", filtered);
 }
 
 @end
