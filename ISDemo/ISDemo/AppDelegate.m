@@ -29,6 +29,23 @@
     
 }
 
+- (void)controller:(UIViewController*)controller didSelect:(id)selection sender:(id)sender
+{
+    NSLog(@"selected %@", selection);
+    
+    UINavigationController *nav = (UINavigationController*)self.window.rootViewController;
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[selection name]];
+    [req setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
+    NSFetchedResultsController *results = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    ISIndexViewController *newController = [[ISIndexViewController alloc] init];
+//    results.defaultDisplayKey = @"name";
+    newController.title = [selection name];
+    newController.fetchedResultsController = results;
+    [newController setRepresentedObject:results];
+    [results performFetch:NULL];
+    [nav pushViewController:newController animated:YES];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];

@@ -104,10 +104,21 @@
     return [_attributes objectAtIndex:[indexPath row]];
 }
 
+- valueForIndexPath:(NSIndexPath*)indexPath
+{
+    NSAttributeDescription *property = [self propertyForIndexPath:indexPath];
+    [self.representedObject valueForKey:[property name]];
+}
+
 - (void)tableCell:(UITableViewCell*)cell updateValue:value atIndexPath:(NSIndexPath *)indexPath
 {
     NSAttributeDescription *property = [self propertyForIndexPath:indexPath];
    [self.representedObject setValue:value forKey:[property name]];
+}
+
+- cellIndentifierForIndexPath:(NSIndexPath*)indexPath
+{
+    return @"DefaultCell";
 }
 
 #pragma mark - UIDatePicker Delegate
@@ -129,8 +140,21 @@
     [self.tableView reloadData];
 }
 
-- (UITableViewCell*)configureCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
+- (UITableViewCell*)configureCell:(UITableViewCell*)cell withIdentifier:(NSString*)ident
+                forRowAtIndexPath:(NSIndexPath*)indexPath;
 {
+    if (cell == nil ) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ident];
+    }
+    NSAttributeDescription *property = [self propertyForIndexPath:indexPath];
+    id value = [self valueForIndexPath:indexPath];
+    if ([cell respondsToSelector:@selector(setRepresentedObject:)]) {
+        [(id)cell setRepresentedObject:value];
+    }
+    else {
+        cell.textLabel.text = [value description];
+        cell.detailTextLabel.text = property.name;
+    }
     return cell;
 }
 
@@ -146,11 +170,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSString *CellIdentifier = [self cellIndentifierForIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    cell = [self configureCell:cell withIdentifier:CellIdentifier forRowAtIndexPath:indexPath];
     return cell;
 }
 

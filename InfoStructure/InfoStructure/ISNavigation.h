@@ -11,5 +11,6 @@
 @interface ISNavigation : NSObject
 
 -(void)didPrepareForSegue:(UIStoryboardSegue*)segue withSelection:selection;
+- (void)controller:(UIViewController*)controller didSelect:(id)selection sender:(id)sender;
 
 @end
