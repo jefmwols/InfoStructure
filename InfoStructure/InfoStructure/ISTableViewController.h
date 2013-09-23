@@ -62,7 +62,8 @@ typedef NS_OPTIONS(NSUInteger, IS_CONTROLER_STATE) {
 - (id)initWithEntityName:(NSString*)entityName representedObject:value context:(NSManagedObjectContext*)moc;
 
 - (NSAttributeDescription*)propertyForIndexPath:(NSIndexPath*)indexPath;
-- (UITableViewCell*)configureCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
+- (UITableViewCell*)configureCell:(UITableViewCell*)cell withIdentifier:(NSString*)ident
+                forRowAtIndexPath:(NSIndexPath*)indexPath;
 
 - (void)tableCell:(UITableViewCell*)cell updateValue:inValue atIndexPath:(NSIndexPath *)inIndexPath;
 

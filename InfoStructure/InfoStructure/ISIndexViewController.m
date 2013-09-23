@@ -8,6 +8,7 @@
 
 #import "ISIndexViewController.h"
 #import <ISRelay.h>
+#import <InfoStructure/ISNavigation.h>
 
 @interface ISIndexViewController ()
 
@@ -33,7 +34,7 @@
     self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
 //    [self performFetch];
 }
@@ -62,7 +63,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *reuseId = [self identifierForCellAtIndexPath:indexPath];
-    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
     cell = [self configureCell:cell forRowAtIndexPath:indexPath];
     return cell;
@@ -76,6 +76,11 @@
     } else
         return nil;
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 40.0;
+//}
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return [self.fetchedResultsController sectionIndexTitles];
@@ -121,16 +126,36 @@
     return cell;
 }
 
-/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    id sender = [tableView cellForRowAtIndexPath:indexPath];
+    id selection;
+    
+    //    trace();
+    
+    if ([sender respondsToSelector:@selector(representedObject)]) {
+        selection = [sender representedObject];
+    }
+//    else if ([self respondsToSelector:@selector(representedObject)]) {
+//        selection = [self performSelector:@selector(representedObject)];
+//    }
+    else {
+        selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
+    [[self relay] controller:self didSelect:selection sender:sender];
+}
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
+//    return (indexPath.row > 0);
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -142,7 +167,6 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.
