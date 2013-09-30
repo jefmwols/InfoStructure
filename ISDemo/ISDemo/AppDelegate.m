@@ -11,6 +11,8 @@
 #import <InfoStructure/ISStaticResultsController.h>
 #import <InfoStructure/ISIndexViewController.h>
 #import <InfoStructure/ISNavigation.h>
+#import <REMenu.h>
+#import <REMenuItem.h>
 
 
 @implementation AppDelegate
@@ -156,10 +158,13 @@
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ISDemo.sqlite"];
-    
+    NSDictionary *options = @{
+        NSMigratePersistentStoresAutomaticallyOption:@YES,
+        NSInferMappingModelAutomaticallyOption:@YES
+        };
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -183,11 +188,52 @@
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
     
     return _persistentStoreCoordinator;
+}
+
+- (void)showMenuForController:(UIViewController*)controller
+{
+
+REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Home"
+                                                subtitle:@"Return to Home Screen"
+                                                   image:[UIImage imageNamed:@"Icon_Home"]
+                                        highlightedImage:nil
+                                                  action:^(REMenuItem *item) {
+                                                      NSLog(@"Item: %@", item);
+                                                  }];
+
+REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore"
+                                                   subtitle:@"Explore 47 additional options"
+                                                      image:[UIImage imageNamed:@"Icon_Explore"]
+                                           highlightedImage:nil
+                                                     action:^(REMenuItem *item) {
+                                                         NSLog(@"Item: %@", item);
+                                                     }];
+
+REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"Activity"
+                                                    subtitle:@"Perform 3 additional activities"
+                                                       image:[UIImage imageNamed:@"Icon_Activity"]
+                                            highlightedImage:nil
+                                                      action:^(REMenuItem *item) {
+                                                          NSLog(@"Item: %@", item);
+                                                      }];
+
+REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Profile"
+                                                      image:[UIImage imageNamed:@"Icon_Profile"]
+                                           highlightedImage:nil
+                                                     action:^(REMenuItem *item) {
+                                                         NSLog(@"Item: %@", item);
+                                                     }];
+
+    self.menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, activityItem, profileItem]];
+    
+    UINavigationController *nav = (UINavigationController*)self.window.rootViewController;
+    [self.menu showFromNavigationController:nav];
 }
 
 #pragma mark - Application's Documents directory

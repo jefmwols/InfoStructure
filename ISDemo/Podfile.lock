@@ -1,15 +1,18 @@
 PODS:
   - InfoStructure (0.0.1)
+  - REMenu (1.5)
 
 DEPENDENCIES:
-  - InfoStructure (from `~/Personal/wildthink/labs/InfoStructure/InfoStructure`)
+  - InfoStructure (from `~/Sandbox/InfoStructure/InfoStructure/`)
+  - REMenu (~> 1.5)
 
 EXTERNAL SOURCES:
   InfoStructure:
     :branch: develop
-    :path: ~/Personal/wildthink/labs/InfoStructure/InfoStructure
+    :path: ~/Sandbox/InfoStructure/InfoStructure/
 
 SPEC CHECKSUMS:
   InfoStructure: 9e98d7e57c5c0a1e873dc034457f1eb8ecec4e71
+  REMenu: 6b0583aea38a1eae802d56ec9a0202dacbed3f88
 
 COCOAPODS: 0.24.0

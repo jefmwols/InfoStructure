@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8EF10E2A4A0B4F9DBC81F66A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC6BAD85D204B038763985E /* libPods.a */; };
+		963010F717F60DED004BB35D /* iCTransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 963010F617F60DED004BB35D /* iCTransactionCell.xib */; };
+		963010FA17F60E3A004BB35D /* iCTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963010F917F60E3A004BB35D /* iCTransactionCell.m */; };
 		969D7A4517DBD23700E8EFD6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969D7A4417DBD23700E8EFD6 /* Foundation.framework */; };
 		969D7A4717DBD23700E8EFD6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969D7A4617DBD23700E8EFD6 /* CoreGraphics.framework */; };
 		969D7A4917DBD23700E8EFD6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969D7A4817DBD23700E8EFD6 /* UIKit.framework */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		963010F617F60DED004BB35D /* iCTransactionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = iCTransactionCell.xib; sourceTree = "<group>"; };
+		963010F817F60E3A004BB35D /* iCTransactionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCTransactionCell.h; sourceTree = "<group>"; };
+		963010F917F60E3A004BB35D /* iCTransactionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCTransactionCell.m; sourceTree = "<group>"; };
 		969D7A4117DBD23700E8EFD6 /* ISDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		969D7A4417DBD23700E8EFD6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		969D7A4617DBD23700E8EFD6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +134,9 @@
 				969D7A5817DBD23700E8EFD6 /* ISDemo.xcdatamodeld */,
 				969D7A4D17DBD23700E8EFD6 /* Supporting Files */,
 				969D7AC917DD001E00E8EFD6 /* MainStoryboard.storyboard */,
+				963010F617F60DED004BB35D /* iCTransactionCell.xib */,
+				963010F817F60E3A004BB35D /* iCTransactionCell.h */,
+				963010F917F60E3A004BB35D /* iCTransactionCell.m */,
 			);
 			path = ISDemo;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963010F717F60DED004BB35D /* iCTransactionCell.xib in Resources */,
 				969D7ACA17DD001E00E8EFD6 /* MainStoryboard.storyboard in Resources */,
 				969D7A5117DBD23700E8EFD6 /* InfoPlist.strings in Resources */,
 				969D7A5C17DBD23700E8EFD6 /* Images.xcassets in Resources */,
@@ -293,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				963010FA17F60E3A004BB35D /* iCTransactionCell.m in Sources */,
 				969D7A5717DBD23700E8EFD6 /* AppDelegate.m in Sources */,
 				969D7A5A17DBD23700E8EFD6 /* ISDemo.xcdatamodeld in Sources */,
 				969D7A5317DBD23700E8EFD6 /* main.m in Sources */,

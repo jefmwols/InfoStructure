@@ -26,6 +26,26 @@
     return self;
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    if (editing) {
+        UIButton *plus = [UIButton buttonWithType:UIButtonTypeSystem];
+        [plus setTitle:@"Add One" forState:UIControlStateNormal];
+        [plus sizeToFit];
+        [plus addTarget:self action:@selector(addItem:) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView setTableFooterView:plus];
+    }
+    else {
+        [self.tableView setTableFooterView:nil];
+    }
+    [super setEditing:editing animated:animated];
+}
+
+- (IBAction)addItem:(id)sender
+{
+        NSLog(@"Add one");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

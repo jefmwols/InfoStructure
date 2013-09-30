@@ -15,8 +15,9 @@
   will be available from the runtime.
 */
 -(void)didPrepareForSegue:(UIStoryboardSegue*)segue withSelection:selection
-{
-    
-}
+{}
+
+- (void)controller:(UIViewController*)controller didSelect:(id)selection sender:(id)sender;
+{}
 
 @end
