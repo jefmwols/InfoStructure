@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSObject <ISResultsController> *fetchedResultsController;
 @property (strong, nonatomic) NSObject *representedObject;
-
+@property (assign, nonatomic) BOOL isEditable;
 
 - (UITableViewCell*)configureCell:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
 

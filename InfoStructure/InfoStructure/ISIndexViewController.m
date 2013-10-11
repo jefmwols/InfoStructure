@@ -26,8 +26,21 @@
     return self;
 }
 
+- (UIResponder*)nextResponder
+{
+    UIResponder* nextResponder = [super nextResponder];
+    if (nextResponder == nil) {
+        nextResponder = [UIApplication sharedApplication];
+//        nextResponder = [self parentViewController];
+    }
+    return nextResponder;
+}
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
+    if (!self.isEditable) {
+        return;
+    }
     if (editing) {
         UIButton *plus = [UIButton buttonWithType:UIButtonTypeSystem];
         [plus setTitle:@"Add One" forState:UIControlStateNormal];
@@ -37,6 +50,7 @@
     }
     else {
         [self.tableView setTableFooterView:nil];
+        [[self relay] cancelActionsForController:self];
     }
     [super setEditing:editing animated:animated];
 }
@@ -44,6 +58,7 @@
 - (IBAction)addItem:(id)sender
 {
         NSLog(@"Add one");
+    [[self relay] showMenuForController:self];
 }
 
 - (void)viewDidLoad
@@ -51,10 +66,11 @@
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
-    self.clearsSelectionOnViewWillAppear = NO;
+//    self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (self.isEditable) {
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    }
     
 //    [self performFetch];
 }

@@ -6,7 +6,14 @@
 //  Copyright (c) 2013 WildThink, LLC. All rights reserved.
 //
 
-//#import <UIKit/UIKit.h>
+#ifdef TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#define NSApp [UIApplication sharedApplication]
+#else
+#import <AppKit/NSApplication.h>
+#define NSApp [NSApplication sharedApplication]
+#endif
+
 #import "ISRelay.h"
 #import "EXTNil.h"
 
@@ -81,6 +88,12 @@ static inline BOOL CanDo (id target, SEL selector, Protocol *protocol)
                 }
             }
         }
+    }
+    if (CanDo (NSApp, aSelector, self.protocol)) {
+        return NSApp;
+    }
+    if (CanDo ([NSApp delegate], aSelector, self.protocol)) {
+        return [NSApp delegate];
     }
     // else
     // return EXTNil gives us the behavior of nil as a target to the orginal method call

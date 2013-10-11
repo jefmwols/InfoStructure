@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 Jobe,Jason. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
+
 #import "ISModelStore.h"
 
 
-NSString * const ISModelIncrementalStoreType = @"ISModelIncrementalStoreType";
+NSString * const ISModelIncrementalStoreType = @"ISModelStore";
 NSString * const ISStoreConfigureDebugEnabled = @"ISStoreConfigureDebugEnabled";
 
 @interface ISModelStore ()
@@ -51,29 +53,30 @@ NSString * const ISStoreConfigureDebugEnabled = @"ISStoreConfigureDebugEnabled";
          withContext:(NSManagedObjectContext *)context
                error:(NSError **)error
 {
-    NSString *errorMessage = nil;
-    
-    switch (request.requestType) {
-        case NSFetchRequestType:
-            return nil;
-            break;
-            
-        case NSSaveRequestType:
-            
-        default:
-            errorMessage = [NSString stringWithFormat:@"Unsupported request type %d", request.requestType];
-            *error = [NSError errorWithDomain:@"ISModelStore"
-                                         code:0
-                                     userInfo:@{NSLocalizedDescriptionKey:errorMessage}];
-            return nil;
+    if ([request requestType] == NSFetchRequestType)
+    {
+        NSFetchRequest *fetchRequest = (NSFetchRequest *)request;
+        NSEntityDescription *entity = [fetchRequest entity];
+        
+        NSArray *primaryKeys = [self valueForKeyPath:@"model.entities.name"];
+        NSMutableArray *fetchedObjects = [NSMutableArray arrayWithCapacity:[primaryKeys count]];
+        for (NSString *primaryKey in primaryKeys) {
+            NSManagedObjectID *objectID = [self newObjectIDForEntity:entity referenceObject:primaryKey];
+            NSManagedObject *managedObject = [context objectWithID:objectID];
+            [fetchedObjects addObject:managedObject];
+        }
+        
+        return fetchedObjects;
     }
+    return nil;
 }
 
 - (NSIncrementalStoreNode *)newValuesForObjectWithID:(NSManagedObjectID *)objectID
                                          withContext:(NSManagedObjectContext *)context
                                                error:(NSError **)error
 {
-    NSDictionary *values = @{};
+    id referenceObject = [self referenceObjectForObjectID:objectID];
+    NSDictionary *values = @{ @"name": [referenceObject name], @"native": referenceObject };
     if (!values) return nil;
     return [[NSIncrementalStoreNode alloc] initWithObjectID:objectID withValues:values version:0];
 }

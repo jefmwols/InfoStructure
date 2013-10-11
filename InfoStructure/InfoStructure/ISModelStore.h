@@ -14,4 +14,6 @@ extern NSString * const ISStoreConfigureDebugEnabled;
 
 @interface ISModelStore : NSIncrementalStore
 
+@property (strong, nonatomic) NSManagedObjectModel *model;
+
 @end

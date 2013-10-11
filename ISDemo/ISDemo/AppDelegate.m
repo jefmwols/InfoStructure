@@ -11,6 +11,10 @@
 #import <InfoStructure/ISStaticResultsController.h>
 #import <InfoStructure/ISIndexViewController.h>
 #import <InfoStructure/ISNavigation.h>
+#import <InfoStructure/ISModelStore.h>
+#import <ISRelay.h>
+#import <ISDataSource.h>
+
 #import <REMenu.h>
 #import <REMenuItem.h>
 
@@ -31,6 +35,36 @@
     
 }
 
+- (void)controller:(UIViewController*)controller list:entity
+{
+    
+}
+
+- (void)sender:sender requestsInsertOf:entity
+{
+    NSString* entityName = [entity isKindOfClass:[NSEntityDescription class]] ? [entity name] : entity;
+    id nob = [NSEntityDescription
+                        insertNewObjectForEntityForName:entityName
+                        inManagedObjectContext:self.managedObjectContext];
+    
+    [[sender relay] sender:sender requestsEditObject:nob];
+}
+
+- (void)controller:(ISIndexViewController*)controller requestsFetch:(NSFetchRequest*)fetch
+{
+    if ([fetch.entityName isEqualToString:@"entities"]) {
+        ISStaticResultsController *results = [[ISStaticResultsController alloc]
+                                              initWithObjects:[self.managedObjectModel entities]];
+        results.defaultDisplayKey = @"name";
+        controller.fetchedResultsController = results;
+        [controller setRepresentedObject:results];
+        [results performFetch:NULL];
+    }
+    else {
+        controller.isEditable = YES;
+    }
+}
+
 - (void)controller:(UIViewController*)controller didSelect:(id)selection sender:(id)sender
 {
     NSLog(@"selected %@", selection);
@@ -39,9 +73,11 @@
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[selection name]];
     [req setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
     NSFetchedResultsController *results = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
     ISIndexViewController *newController = [[ISIndexViewController alloc] init];
-//    results.defaultDisplayKey = @"name";
+
     newController.title = [selection name];
+    newController.isEditable = YES;
     newController.fetchedResultsController = results;
     [newController setRepresentedObject:results];
     [results performFetch:NULL];
@@ -50,24 +86,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle: nil];
-//    ISIndexViewController *controller = (ISIndexViewController*)[mainStoryboard instantiateViewControllerWithIdentifier: @"FirstController"];
+    [NSPersistentStoreCoordinator registerStoreClass:[ISModelStore class]
+                                        forStoreType:ISModelIncrementalStoreType];
     
     UINavigationController *nav = (UINavigationController*)self.window.rootViewController;
     ISIndexViewController *controller = (ISIndexViewController*)nav.topViewController;
 
-//    ISStaticResultsController *results = [[ISStaticResultsController alloc] initWithObjects:@[@"One", @"Two"]];
-    ISStaticResultsController *results = [[ISStaticResultsController alloc]
-                                          initWithObjects:[self.managedObjectModel entities]];
-    results.defaultDisplayKey = @"name";
-    controller.fetchedResultsController = results;
-    [controller setRepresentedObject:results];
-    [results performFetch:NULL];
-    
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    // Override point for customization after application launch.
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
+    [[controller relay] controller:controller
+                     requestsFetch:[NSFetchRequest fetchRequestWithEntityName:@"entities"]];
     return YES;
 }
 
@@ -164,8 +190,20 @@
         };
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
-        /*
+    ISModelStore *store =
+    (ISModelStore*)[_persistentStoreCoordinator addPersistentStoreWithType:ISModelIncrementalStoreType
+                                                             configuration:@"Type"
+                                                                       URL:[NSURL URLWithString:@"storeA"]
+                                                                   options:options
+                                                                     error:&error];
+    
+    store.model = [self managedObjectModel];
+
+//    [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+//                                              configuration:@"Default" URL:storeURL options:options error:&error]
+    if (!store)
+    {
+         /*
          Replace this implementation with code to handle the error appropriately.
          
          abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
@@ -194,6 +232,11 @@
     }    
     
     return _persistentStoreCoordinator;
+}
+
+- (void)cancelActionsForController:(UIViewController*)controller
+{
+    [self.menu close];
 }
 
 - (void)showMenuForController:(UIViewController*)controller

@@ -3,13 +3,13 @@ PODS:
   - REMenu (1.5)
 
 DEPENDENCIES:
-  - InfoStructure (from `~/Sandbox/InfoStructure/InfoStructure/`)
+  - InfoStructure (from `~/Personal/wildthink/labs/InfoStructure/InfoStructure`)
   - REMenu (~> 1.5)
 
 EXTERNAL SOURCES:
   InfoStructure:
     :branch: develop
-    :path: ~/Sandbox/InfoStructure/InfoStructure/
+    :path: ~/Personal/wildthink/labs/InfoStructure/InfoStructure
 
 SPEC CHECKSUMS:
   InfoStructure: 9e98d7e57c5c0a1e873dc034457f1eb8ecec4e71

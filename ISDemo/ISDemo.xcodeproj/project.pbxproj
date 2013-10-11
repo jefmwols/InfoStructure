@@ -26,6 +26,7 @@
 		969D7A6E17DBD23800E8EFD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 969D7A6C17DBD23800E8EFD6 /* InfoPlist.strings */; };
 		969D7A7017DBD23800E8EFD6 /* ISDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969D7A6F17DBD23800E8EFD6 /* ISDemoTests.m */; };
 		969D7ACA17DD001E00E8EFD6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969D7AC917DD001E00E8EFD6 /* MainStoryboard.storyboard */; };
+		C97625211804F14B00D8AD8B /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C97625201804F14B00D8AD8B /* SWTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		969D7A6D17DBD23800E8EFD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		969D7A6F17DBD23800E8EFD6 /* ISDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDemoTests.m; sourceTree = "<group>"; };
 		969D7AC917DD001E00E8EFD6 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C976251F1804F14B00D8AD8B /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		C97625201804F14B00D8AD8B /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
 		CBDDF2E5D68B4ADBB049A01F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		FEC6BAD85D204B038763985E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,6 +131,8 @@
 		969D7A4C17DBD23700E8EFD6 /* ISDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C976251F1804F14B00D8AD8B /* SWTableViewCell.h */,
+				C97625201804F14B00D8AD8B /* SWTableViewCell.m */,
 				969D7A5517DBD23700E8EFD6 /* AppDelegate.h */,
 				969D7A5617DBD23700E8EFD6 /* AppDelegate.m */,
 				969D7A5B17DBD23700E8EFD6 /* Images.xcassets */,
@@ -303,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				963010FA17F60E3A004BB35D /* iCTransactionCell.m in Sources */,
+				C97625211804F14B00D8AD8B /* SWTableViewCell.m in Sources */,
 				969D7A5717DBD23700E8EFD6 /* AppDelegate.m in Sources */,
 				969D7A5A17DBD23700E8EFD6 /* ISDemo.xcdatamodeld in Sources */,
 				969D7A5317DBD23700E8EFD6 /* main.m in Sources */,
